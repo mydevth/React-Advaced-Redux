@@ -50,14 +50,15 @@ export default function RegisterPage() {
 
   type FormData = yup.InferType<typeof schema>;
 
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get("email"),
-      password: data.get("password"),
-    });
-  };
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<FormData>({
+    resolver: yupResolver(schema),
+    mode: "all",
+  });
+  const onSubmit = (data: FormData) => console.log(data);
 
   return (
     <>
@@ -79,50 +80,46 @@ export default function RegisterPage() {
           <Box
             component="form"
             noValidate
-            onSubmit={handleSubmit}
+            onSubmit={handleSubmit(onSubmit)}
             sx={{ mt: 3 }}
           >
             <Grid container spacing={2}>
               <Grid item xs={12} sm={6}>
                 <TextField
-                  autoComplete="given-name"
-                  name="firstName"
-                  required
+                  {...register("firstName")}
+                  error={errors.firstName ? true : false}
+                  helperText={errors.firstName && errors.firstName.message}
                   fullWidth
-                  id="firstName"
                   label="First Name"
                   autoFocus
                 />
               </Grid>
               <Grid item xs={12} sm={6}>
                 <TextField
-                  required
+                  {...register("lastName")}
+                  error={errors.lastName ? true : false}
+                  helperText={errors.lastName && errors.lastName.message}
                   fullWidth
-                  id="lastName"
                   label="Last Name"
-                  name="lastName"
-                  autoComplete="family-name"
                 />
               </Grid>
               <Grid item xs={12}>
                 <TextField
-                  required
+                  {...register("email")}
+                  error={errors.email ? true : false}
+                  helperText={errors.email && errors.email.message}
                   fullWidth
-                  id="email"
                   label="Email Address"
-                  name="email"
-                  autoComplete="email"
                 />
               </Grid>
               <Grid item xs={12}>
                 <TextField
-                  required
+                  {...register("password")}
+                  error={errors.password ? true : false}
+                  helperText={errors.password && errors.password.message}
                   fullWidth
-                  name="password"
                   label="Password"
                   type="password"
-                  id="password"
-                  autoComplete="new-password"
                 />
               </Grid>
             </Grid>

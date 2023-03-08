@@ -71,5 +71,6 @@ https://react-hook-form.com/get-started/
 npm install react-hook-form
 npm install @hookform/resolvers yup
 
+https://react-hook-form.com/get-started/#SchemaValidation
 https://www.npmjs.com/package/yup-password
 npm install yup-password
