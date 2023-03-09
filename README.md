@@ -2,13 +2,9 @@
 
 ## Time: Mar 8, 2023 08:00 PM Bangkok
 
-### Slide, VDO and Resources
+### [Slide, VDO and Resources](http://bit.ly/41S2417)
 
-    http://bit.ly/41S2417
-
-### โค้ดระหว่างเรียน
-
-    https://gitlab.com/codingthailand/advanced-redux-app
+### [โค้ดระหว่างเรียน](https://gitlab.com/codingthailand/advanced-redux-app)
 
 1. ติดตั้ง Node.js เวอร์ชัน LTS (ตอนนี้เวอร์ชัน 18)
    https://nodejs.org/dist/v18.14.0/node-v18.14.0-x64.msi
