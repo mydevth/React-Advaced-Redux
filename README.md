@@ -36,9 +36,9 @@ port: 4000
 }  
 // ที่ vite.config.ts
 ```
-
+```
 npm run dev
-
+```
 ### Install UI component
 
 https://mui.com/material-ui/getting-started/installation/
