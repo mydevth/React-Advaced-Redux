@@ -21,14 +21,16 @@
 - Prettier - Code formatter
 
 **Create React Project**
-
+```
 npm create vite@latest
+```
 `y , React , TypeScript + SWC`
-
+```
 npm install
-
+```
+```
 npm doctor
-
+```
 ### ใส่
 ```js
 server: {
