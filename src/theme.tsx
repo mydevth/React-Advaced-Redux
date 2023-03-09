@@ -14,6 +14,19 @@ const theme = createTheme({
       main: red.A400,
     },
   },
+  typography: {
+    fontFamily: [
+      'Kanit',
+      '-apple-system',
+      'BlinkMacSystemFont',
+      '"Segoe UI"',
+      'Arial',
+      'sans-serif',
+      '"Apple Color Emoji"',
+      '"Segoe UI Emoji"',
+      '"Segoe UI Symbol"',
+    ].join(','),
+  },
 });
 
 export default theme;
