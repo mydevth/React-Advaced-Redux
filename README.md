@@ -51,7 +51,7 @@ npm install @mui/material @emotion/react @emotion/styled
 npm install @mui/icons-material
 ```
 
-create theme.tsx , copy content from git example code
+สร้างไฟล์ theme.tsx , นำข้อมูลจากตัวอย่าง from git example code
 
 ### install Router
 ```
