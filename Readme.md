@@ -40,7 +40,7 @@ https://us06web.zoom.us/j/84738878611?pwd=TjRGSzl0d3FMb09qb1hnd2ZnR0xyUT09
 ### Create React Project
 
 npm create vite@latest
-y , React , TypeScript + SWC
+`y , React , TypeScript + SWC`
 
 npm install
 
