@@ -41,7 +41,7 @@ port: 4000
 ```
 npm run dev
 ```
-### Install UI component
+### Install Material UI component
 
 https://mui.com/material-ui/getting-started/installation/
 ```
