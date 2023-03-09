@@ -14,14 +14,13 @@
 
 [ลิงก์เข้าเรียนโปรแกรม Zoom](https://us06web.zoom.us/j/84738878611?pwd=TjRGSzl0d3FMb09qb1hnd2ZnR0xyUT09)
 
-### VS Extension
-
+**VS Extension**
 - simple React snippets
 - html to JSX
 - Material Icon Theme
 - Prettier - Code formatter
 
-### Create React Project
+**Create React Project**
 
 npm create vite@latest
 `y , React , TypeScript + SWC`
@@ -31,11 +30,12 @@ npm install
 npm doctor
 
 ### ใส่
-
+```js
 server: {
 port: 4000
 }  
-ที่ vite.config.ts
+// ที่ vite.config.ts
+```
 
 npm run dev
 
