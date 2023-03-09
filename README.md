@@ -44,19 +44,29 @@ npm run dev
 ### Install UI component
 
 https://mui.com/material-ui/getting-started/installation/
+```
 npm install @mui/material @emotion/react @emotion/styled
+```
+```
 npm install @mui/icons-material
+```
 
 create theme.tsx , copy content from git example code
 
 ### install Router
-
+```
 npm install react-router-dom
-
+```
 https://react-hook-form.com/get-started/
+```
 npm install react-hook-form
+```
+```
 npm install @hookform/resolvers yup
+```
 
 https://react-hook-form.com/get-started/#SchemaValidation
 https://www.npmjs.com/package/yup-password
+```
 npm install yup-password
+```
