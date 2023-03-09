@@ -24,7 +24,7 @@
 ```
 npm create vite@latest
 ```
-`y , React , TypeScript + SWC`
+ตอบ y ,ตั้งชื่อ app , เลื่อก React , TypeScript + SWC`
 ```
 npm install
 ```
