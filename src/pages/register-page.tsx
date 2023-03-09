@@ -13,6 +13,9 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import YupPassword from "yup-password";
 YupPassword(yup); // extend yup
+import toast from "react-hot-toast";
+import { registerUser } from "../services/auth.service";
+import { useNavigate } from "react-router-dom";
 
 function Copyright(props: any) {
   return (
@@ -33,6 +36,7 @@ function Copyright(props: any) {
 }
 
 export default function RegisterPage() {
+  const navigate = useNavigate();
   const schema = yup.object().shape({
     firstName: yup.string().required("ป้อนข้อมูลชื่อด้วย"),
     lastName: yup.string().required("ป้อนข้อมูลนามสกุลด้วย"),
@@ -58,7 +62,26 @@ export default function RegisterPage() {
     resolver: yupResolver(schema),
     mode: "all",
   });
-  const onSubmit = (data: FormData) => console.log(data);
+  const onSubmit = async (data: FormData) => {
+    try {
+      const userCredential = await registerUser(
+        data.firstName,
+        data.lastName,
+        data.email,
+        data.password!
+      );
+      if (userCredential.user != null) {
+        toast.success("ลงทะเบียนสำเร็จแล้ว");
+        navigate("/");
+      }
+    } catch (error: any) {
+      if (error.code === "auth/email-already-in-use") {
+        toast.error("มีอีเมลนี้ในระบบแล้ว");
+      } else {
+        toast.error(error.message);
+      }
+    }
+  };
 
   return (
     <>
