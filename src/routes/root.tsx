@@ -3,6 +3,7 @@ import Homepage from "../pages/home-page";
 import TButton from "../testButton";
 import RegisterPage from "../pages/register-page";
 import LoginPage from "../pages/login-page";
+import routeDashboard from "./dashboard";
 
 const router = createBrowserRouter([
   {
@@ -21,6 +22,7 @@ const router = createBrowserRouter([
     path: "/login",
     element: <LoginPage />,
   },
+  ...routeDashboard,
 ]);
 
 export default router;

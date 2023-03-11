@@ -1,5 +1,4 @@
 import Avatar from "@mui/material/Avatar";
-import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 import Link from "@mui/material/Link";
 import Grid from "@mui/material/Grid";
@@ -16,6 +15,7 @@ YupPassword(yup); // extend yup
 import toast from "react-hot-toast";
 import { registerUser } from "../services/auth.service";
 import { useNavigate } from "react-router-dom";
+import LoadingButton from "@mui/lab/LoadingButton";
 
 function Copyright(props: any) {
   return (
@@ -37,6 +37,7 @@ function Copyright(props: any) {
 
 export default function RegisterPage() {
   const navigate = useNavigate();
+
   const schema = yup.object().shape({
     firstName: yup.string().required("ป้อนข้อมูลชื่อด้วย"),
     lastName: yup.string().required("ป้อนข้อมูลนามสกุลด้วย"),
@@ -57,11 +58,12 @@ export default function RegisterPage() {
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    formState: { errors, isSubmitting },
   } = useForm<FormData>({
     resolver: yupResolver(schema),
     mode: "all",
   });
+
   const onSubmit = async (data: FormData) => {
     try {
       const userCredential = await registerUser(
@@ -71,12 +73,12 @@ export default function RegisterPage() {
         data.password!
       );
       if (userCredential.user != null) {
-        toast.success("ลงทะเบียนสำเร็จแล้ว");
+        toast.success("ลงทะเบียนสำเร็จ");
         navigate("/");
       }
     } catch (error: any) {
       if (error.code === "auth/email-already-in-use") {
-        toast.error("มีอีเมลนี้ในระบบแล้ว");
+        toast.error("มีผู้ใช้งานอีเมล์นี้ในระบบแล้ว");
       } else {
         toast.error(error.message);
       }
@@ -114,7 +116,6 @@ export default function RegisterPage() {
                   helperText={errors.firstName && errors.firstName.message}
                   fullWidth
                   label="First Name"
-                  // autoFocus
                 />
               </Grid>
               <Grid item xs={12} sm={6}>
@@ -146,14 +147,16 @@ export default function RegisterPage() {
                 />
               </Grid>
             </Grid>
-            <Button
+            <LoadingButton
               type="submit"
               fullWidth
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
+              loading={isSubmitting}
+              loadingIndicator="กำลังลงทะเบียน รอสักครู่..."
             >
               ลงทะเบียน
-            </Button>
+            </LoadingButton>
             <Grid container justifyContent="center" spacing={3}>
               <Grid item>
                 <Link href="/" variant="body2">

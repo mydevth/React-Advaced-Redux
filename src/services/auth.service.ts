@@ -1,4 +1,10 @@
-import { createUserWithEmailAndPassword, getAuth } from "firebase/auth";
+import {
+  createUserWithEmailAndPassword,
+  getAuth,
+  signInWithEmailAndPassword,
+  signOut,
+  UserCredential,
+} from "firebase/auth";
 import { getFirestore, setDoc, doc } from "firebase/firestore";
 import { firebaseApp } from "../configs/firebase";
 
@@ -10,16 +16,16 @@ export async function registerUser(
   lastName: string,
   email: string,
   password: string
-) {
+): Promise<UserCredential> {
   try {
-    // register user to firebase authentication
+    //register user to firebase authentication
     const userCredential = await createUserWithEmailAndPassword(
       auth,
       email,
       password
     );
 
-    // save user profile to firestore  "users" is Table,
+    //save user profile to firestore
     await setDoc(doc(db, "users", userCredential.user.uid), {
       firstName: firstName,
       lastName: lastName,
@@ -31,4 +37,19 @@ export async function registerUser(
   } catch (error) {
     throw error;
   }
+}
+
+export async function login(
+  email: string,
+  password: string
+): Promise<UserCredential> {
+  try {
+    return await signInWithEmailAndPassword(auth, email, password);
+  } catch (error) {
+    throw error;
+  }
+}
+
+export async function logout(): Promise<void> {
+  await signOut(auth);
 }
